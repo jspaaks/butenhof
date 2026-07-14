@@ -28,7 +28,7 @@ Output should be something like below. Program `hello` illustrates multiple thre
 concurrently saying hello.
 
 ```console
-$ ./dist/bin/hello                                                                                                                                                                                                                                                                                           
+$ ./dist/bin/hello
 hello from main
 hello from thread 3
 hello from thread 1
@@ -45,7 +45,7 @@ goodbye from main
 between threads, in this case a bank account.
 
 ```console
-$ ./dist/bin/bank 
+$ ./dist/bin/bank
 Concurrently increment a shared variable a=0 one million times in each of 4 threads
 a=4000000
 ```
@@ -55,7 +55,7 @@ that simulates the stock in a warehouse, with a producer and a consumer adding a
 items from said stack.
 
 ```
-$ ./dist/bin/warehouse                                                                                                                                                                                                                                                                                       
+$ ./dist/bin/warehouse
 ___ ___ ___
 ___ ___ ___
 produced item 1 of 10 with id 716
@@ -141,11 +141,11 @@ consumed item 10 of 10 with id 822
 ```
 
 `pipeline` is a program that illustrates pipelining, with threadsafe ring buffer queues
-in between each stage of the pipeline. This example builds on the examples that use 
+in between each stage of the pipeline. This example builds on the examples that use
 mutexes and condition variables.
 
 ```
-$ ./dist/bin/pipeline                                                                                                                                                                                                                                                                                       
+$ ./dist/bin/pipeline
 vin 0: spawned
 vin 0: start installing frame
 vin 1: spawned
