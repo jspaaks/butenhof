@@ -194,6 +194,16 @@ vin 3: complete
 thread 'sink' complete
 ```
 
+Program `barrier` updates each position of a string at different rates, but using
+a barrier, they still stay in sync:
+
+```console
+$ ./dist/bin/barrier 
+Concurrently update each character in a string, but use
+a barrier to synchronize each thread
+> ffff
+```
+
 ## Acknowledgements
 
 _This project was initialized using [Copier](https://pypi.org/project/copier) and the [copier-template-for-c-projects](https://github.com/jspaaks/copier-template-for-c-projects)._

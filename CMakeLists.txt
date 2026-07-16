@@ -11,6 +11,7 @@ elseif(UNIX)
 endif()
 
 add_subdirectory(src/bank)
+add_subdirectory(src/barrier)
 add_subdirectory(src/hello)
 add_subdirectory(src/pipeline)
 add_subdirectory(src/warehouse)
