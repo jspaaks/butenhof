@@ -204,6 +204,20 @@ a barrier to synchronize each thread
 > ffff
 ```
 
+Program `cancel` illustrates how to cancel a running thread and clean up the resources it was using.
+
+```console
+$ ./dist/bin/cancel 
+Making a compute bound loop cancelable, with cleanup of resources
+0
+1
+Canceling compute-bound thread now...
+2
+Starting the cleanup...
+Done with the cleanup
+Compute-bound thread was canceled as expected.
+```
+
 ## Acknowledgements
 
 _This project was initialized using [Copier](https://pypi.org/project/copier) and the [copier-template-for-c-projects](https://github.com/jspaaks/copier-template-for-c-projects)._
