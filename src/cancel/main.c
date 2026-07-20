@@ -20,6 +20,13 @@ void cleanup (void * arg) {
 
 
 void * compute_bound_loop (void *) {
+    // make the thread temporarily uncancelable until the cleanup has been set up completely
+    pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, nullptr);
+
+    // the thread will be deferred-cancelable
+    pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED, nullptr);
+
+    // define some arbitrary memory resources to illustrate cleaning up
     char * s = calloc(14, sizeof(char));
     if (s == nullptr) {
         const int code = __LINE__;
@@ -27,12 +34,16 @@ void * compute_bound_loop (void *) {
         exit(code);
     }
     strncpy(s, "hello cleanup", 14);
+
+    // push the cleanup of `s` onto the cleanup handlers stack (LIFO)
     pthread_cleanup_push(cleanup, s);
 
+    // make the thread cancelable
+    pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, nullptr);
 
-    // outer compute bound loop is interruptable
-    // inner compute bound loop is uninterruptable
-    pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED, nullptr);
+    // now for the meat and potatoes of the thread, two nested for loops:
+    // outer compute bound loop is interruptable; the inner compute bound
+    // loop is not
     pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, nullptr);
     for (int i = 0; i < INT_MAX; i++) {
         for (int j = 0; j < INT_MAX; j++) {
