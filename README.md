@@ -1,4 +1,4 @@
-# notes
+# Butenhof
 
 Exploring multithreaded applications including mutexes and condition variables with POSIX threads.
 
