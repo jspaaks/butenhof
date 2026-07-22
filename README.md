@@ -198,7 +198,7 @@ Program `barrier` updates each position of a string at different rates, but usin
 a barrier, they still stay in sync:
 
 ```console
-$ ./dist/bin/barrier 
+$ ./dist/bin/barrier
 Concurrently update each character in a string, but use
 a barrier to synchronize each thread
 > ffff
@@ -207,7 +207,7 @@ a barrier to synchronize each thread
 Program `cancel` illustrates how to cancel a running thread and clean up the resources it was using.
 
 ```console
-$ ./dist/bin/cancel 
+$ ./dist/bin/cancel
 Making a compute bound loop cancelable, with cleanup of resources
 0
 1
@@ -216,6 +216,227 @@ Canceling compute-bound thread now...
 Starting the cleanup...
 Done with the cleanup
 Compute-bound thread was canceled as expected.
+```
+
+Program `rwlock` illustrates how to use a read-write lock on some data `value`, where multiple
+threads can read the value concurrently, but only one thread can have write access at any given
+time.
+
+```console
+$ ./dist/bin/rwlock
+Reading and writing a rwlock protected value using multiple threads
+thread_id|reading|writing|done|value
+---------|-------|-------|----|-----
+        0|reading|       |    |    0
+        1|reading|       |    |    0
+        2|reading|       |    |    0
+        3|reading|       |    |    0
+        4|reading|       |    |    0
+        5|reading|       |    |    0
+        6|reading|       |    |    0
+        7|reading|       |    |    0
+        8|reading|       |    |    0
+        9|reading|       |    |    0
+        0|reading|       |    |    0
+        3|reading|       |    |    0
+        1|reading|       |    |    0
+        2|reading|       |    |    0
+        4|reading|       |    |    0
+        6|reading|       |    |    0
+        7|reading|       |    |    0
+        9|reading|       |    |    0
+        8|reading|       |    |    0
+        5|       |writing|    |    1
+        0|reading|       |    |    1
+        6|reading|       |    |    1
+        3|reading|       |    |    1
+        7|reading|       |    |    1
+        4|reading|       |    |    1
+        9|reading|       |    |    1
+        8|reading|       |    |    1
+        2|reading|       |    |    1
+        1|       |writing|    |    2
+        4|reading|       |    |    2
+        9|reading|       |    |    2
+        2|reading|       |    |    2
+        8|reading|       |    |    2
+        5|reading|       |    |    2
+        0|reading|       |    |    2
+        6|reading|       |    |    2
+        7|reading|       |    |    2
+        3|reading|       |    |    2
+        1|       |writing|    |    3
+        5|reading|       |    |    3
+        8|reading|       |    |    3
+        3|reading|       |    |    3
+        6|reading|       |    |    3
+        4|reading|       |    |    3
+        0|reading|       |    |    3
+        9|reading|       |    |    3
+        2|reading|       |    |    3
+        7|       |writing|    |    4
+        4|reading|       |    |    4
+        2|reading|       |    |    4
+        8|reading|       |    |    4
+        9|reading|       |    |    4
+        6|reading|       |    |    4
+        0|reading|       |    |    4
+        3|reading|       |    |    4
+        5|reading|       |    |    4
+        1|reading|       |    |    4
+        7|reading|       |    |    4
+        4|reading|       |    |    4
+        0|reading|       |    |    4
+        3|reading|       |    |    4
+        6|reading|       |    |    4
+        8|reading|       |    |    4
+        9|reading|       |    |    4
+        2|reading|       |    |    4
+        5|reading|       |    |    4
+        1|reading|       |    |    4
+        7|reading|       |    |    4
+        4|reading|       |    |    4
+        9|reading|       |    |    4
+        8|reading|       |    |    4
+        1|reading|       |    |    4
+        3|reading|       |    |    4
+        2|reading|       |    |    4
+        6|reading|       |    |    4
+        5|reading|       |    |    4
+        0|reading|       |    |    4
+        7|reading|       |    |    4
+        2|reading|       |    |    4
+        9|reading|       |    |    4
+        4|reading|       |    |    4
+        6|reading|       |    |    4
+        8|reading|       |    |    4
+        3|reading|       |    |    4
+        1|reading|       |    |    4
+        0|       |writing|    |    5
+        3|reading|       |    |    5
+        7|reading|       |    |    5
+        2|reading|       |    |    5
+        9|reading|       |    |    5
+        6|reading|       |    |    5
+        8|reading|       |    |    5
+        1|reading|       |    |    5
+        5|       |writing|    |    6
+        3|reading|       |    |    6
+        2|reading|       |    |    6
+        8|reading|       |    |    6
+        7|reading|       |    |    6
+        0|reading|       |    |    6
+        1|reading|       |    |    6
+        6|reading|       |    |    6
+        9|reading|       |    |    6
+        4|       |writing|    |    7
+        8|reading|       |    |    7
+        7|reading|       |    |    7
+        6|reading|       |    |    7
+        5|reading|       |    |    7
+        3|reading|       |    |    7
+        9|reading|       |    |    7
+        1|reading|       |    |    7
+        0|reading|       |    |    7
+        2|reading|       |    |    7
+        4|       |writing|    |    8
+        6|reading|       |    |    8
+        0|reading|       |    |    8
+        3|reading|       |    |    8
+        2|reading|       |    |    8
+        8|reading|       |    |    8
+        9|reading|       |    |    8
+        5|reading|       |    |    8
+        1|reading|       |    |    8
+        7|       |writing|    |    9
+        3|reading|       |    |    9
+        2|reading|       |    |    9
+        6|reading|       |    |    9
+        0|reading|       |    |    9
+        4|reading|       |    |    9
+        8|reading|       |    |    9
+        9|reading|       |    |    9
+        5|reading|       |    |    9
+        1|reading|       |    |    9
+        7|reading|       |    |    9
+        3|reading|       |    |    9
+        2|reading|       |    |    9
+        6|reading|       |    |    9
+        0|reading|       |    |    9
+        9|reading|       |    |    9
+        1|reading|       |    |    9
+        5|reading|       |    |    9
+        4|reading|       |    |    9
+        8|reading|       |    |    9
+        7|reading|       |    |    9
+        2|reading|       |    |    9
+        0|reading|       |    |    9
+        3|reading|       |    |    9
+        6|reading|       |    |    9
+        9|reading|       |    |    9
+        8|reading|       |    |    9
+        4|reading|       |    |    9
+        1|       |writing|    |   10
+        6|reading|       |    |   10
+        3|reading|       |    |   10
+        2|reading|       |    |   10
+        8|reading|       |    |   10
+        7|reading|       |    |   10
+        4|reading|       |    |   10
+        0|reading|       |    |   10
+        5|       |writing|    |   11
+        3|reading|       |    |   11
+        0|reading|       |    |   11
+        4|reading|       |    |   11
+        7|reading|       |    |   11
+        2|reading|       |    |   11
+        1|reading|       |    |   11
+        6|reading|       |    |   11
+        9|       |writing|    |   12
+        3|reading|       |    |   12
+        1|reading|       |    |   12
+        7|reading|       |    |   12
+        0|reading|       |    |   12
+        2|reading|       |    |   12
+        6|reading|       |    |   12
+        5|reading|       |    |   12
+        4|reading|       |    |   12
+        8|       |writing|    |   13
+        6|reading|       |    |   13
+        7|reading|       |    |   13
+        5|reading|       |    |   13
+        3|reading|       |    |   13
+        1|reading|       |    |   13
+        0|reading|       |    |   13
+        2|reading|       |    |   13
+        9|reading|       |    |   13
+        4|reading|       |    |   13
+        8|reading|       |    |   13
+        5|reading|       |    |   13
+        6|       |       |done
+        2|       |       |done
+        3|       |       |done
+        1|reading|       |    |   13
+        9|reading|       |    |   13
+        4|reading|       |    |   13
+        0|reading|       |    |   13
+        7|reading|       |    |   13
+        8|reading|       |    |   13
+        5|reading|       |    |   13
+        1|reading|       |    |   13
+        9|reading|       |    |   13
+        4|reading|       |    |   13
+        0|       |       |done
+        7|reading|       |    |   13
+        8|       |       |done
+        1|       |       |done
+        5|       |writing|    |   14
+        7|       |       |done
+        9|       |       |done
+        4|       |       |done
+        5|       |writing|    |   15
+        5|reading|       |    |   15
+        5|       |       |done
 ```
 
 ## Acknowledgements
