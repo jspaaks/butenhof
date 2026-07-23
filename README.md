@@ -71,8 +71,65 @@ Compute-bound thread was canceled as expected.
 
 ## `crew`
 
+Program `crew` illustrates the concept of a work crew, where members of the crew take
+work from a queue and also push new work onto it for any thread to pick up later.
+
 ```console
-...
+$ ./dist/bin/crew
+hello from main
+hello from thread 2
+hello from thread 3
+hello from thread 1
+hello from thread 4
+thread  3 pushed        383
+thread  2 pushed        286
+thread  1 pushed        177
+thread  4 pushed        415
+thread  1        popped 383
+thread  1 pushed        193
+thread  2        popped 286
+thread  2 pushed        235
+thread  1        popped 177
+thread  1 pushed        186
+thread  3        popped 415
+thread  3 pushed        392
+thread  1        popped 193
+thread  1 pushed        149
+thread  4        popped 235
+thread  4 pushed        421
+thread  2        popped 186
+thread  2 pushed        262
+thread  1        popped 392
+thread  1 pushed        127
+thread  1        popped 149
+thread  1 pushed        190
+thread  3        popped 421
+thread  3 pushed        359
+thread  2        popped 262
+thread  2 pushed        263
+thread  1        popped 127
+thread  1 pushed        126
+thread  1        popped 190
+thread  1 pushed        140
+thread  4        popped 359
+thread  4 pushed        426
+thread  2        popped 263
+thread  2 pushed        272
+thread  1        popped 126
+thread  1 pushed        136
+thread  3        popped 140
+thread  3 pushed        311
+thread  1        popped 426
+thread  1 pushed        168
+thread  2        popped 272
+bye from thread 2
+thread  1        popped 136
+bye from thread 1
+thread  4        popped 311
+bye from thread 4
+thread  3        popped 168
+bye from thread 3
+bye from main
 ```
 
 ## `hello`
