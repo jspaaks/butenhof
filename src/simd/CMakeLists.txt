@@ -1,21 +1,21 @@
-add_executable(tgt_exe_spmd)
+add_executable(tgt_exe_simd)
 
-set_property(TARGET tgt_exe_spmd PROPERTY OUTPUT_NAME spmd)
+set_property(TARGET tgt_exe_simd PROPERTY OUTPUT_NAME simd)
 
 target_compile_definitions(
-    tgt_exe_spmd
+    tgt_exe_simd
     PRIVATE
         $<$<CONFIG:Debug>:DEBUG>
 )
 
 target_compile_features(
-    tgt_exe_spmd
+    tgt_exe_simd
     PRIVATE
         c_std_23
 )
 
 target_compile_options(
-    tgt_exe_spmd
+    tgt_exe_simd
     PRIVATE
         -Wall
         -Wextra
@@ -27,21 +27,21 @@ target_compile_options(
 )
 
 target_link_libraries(
-    tgt_exe_spmd
+    tgt_exe_simd
     PRIVATE
         pthread
 )
 
 target_link_options(
-    tgt_exe_spmd
+    tgt_exe_simd
     PRIVATE
         -pie
 )
 
 target_sources(
-    tgt_exe_spmd
+    tgt_exe_simd
     PRIVATE
         main.c
 )
 
-install(TARGETS tgt_exe_spmd)
+install(TARGETS tgt_exe_simd)

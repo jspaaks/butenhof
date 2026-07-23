@@ -379,12 +379,12 @@ thread_id|reading|writing|done|value
         5|       |       |done
 ```
 
-## `spmd`
+## `simd`
 
-Program `spmd` illustrates the concept of a SPMD (Single Program, Multiple Data):
+Program `simd` illustrates the concept of a SIMD (Single Instruction, Multiple Data):
 
 ```console
-$ ./dist/bin/spmd
+$ ./dist/bin/simd
 Calculate the sum of an array of random numbers serially and in parallel
 serial sum  : 4731
 thread sum  : 1274
