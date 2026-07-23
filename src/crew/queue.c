@@ -58,11 +58,17 @@ void * queue_pop (struct queue * self) {
     while (self->len == 0) {
         pthread_cond_wait(&self->cond_has_work, &self->mutex);
     }
-    void * rv = self->head->payload;
-    struct elem * next = self->head->next;
-    free(self->head);
-    self->head = next;
+    struct elem * popped = self->head;
+    void * rv = popped->payload;
+    struct elem * next = popped->next;
+    free(popped);
     self->len--;
+    if (self->len == 0) {
+        self->tail = nullptr;
+        self->head = nullptr;
+    } else {
+        self->head = next;
+    }
     pthread_mutex_unlock(&self->mutex);
     return rv;
 }
@@ -70,22 +76,23 @@ void * queue_pop (struct queue * self) {
 
 void queue_push (struct queue * self, void * item) {
     pthread_mutex_lock(&self->mutex);
-    struct elem * elem = calloc(1, sizeof(struct elem));
-    if (elem == nullptr) {
+    struct elem * pushed = calloc(1, sizeof(struct elem));
+    if (pushed == nullptr) {
         const int code = __LINE__;
         fprintf(stderr, "ERROR %d: problem allocating dynamic memory for queue element, aborting.\n", code);
         exit(code);
     }
-    *elem = (struct elem) {
+    *pushed = (struct elem) {
         .payload = item,
         .next = nullptr,
     };
     if (self->len == 0) {
-        self->head = elem;
+        self->head = pushed;
+        self->tail = pushed;
     } else {
-        self->tail->next = elem;
+        self->tail->next = pushed;
+        self->tail = pushed;
     }
-    self->tail = elem;
     self->len++;
     pthread_cond_signal(&self->cond_has_work);
     pthread_mutex_unlock(&self->mutex);
