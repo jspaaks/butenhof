@@ -24,6 +24,59 @@ $ cmake --build .
 $ cmake --install . --prefix dist/
 ```
 
+## `bank`
+
+`bank` is a program that illustrates the use of mutexes to control access to data shared
+between threads, in this case a bank account.
+
+```console
+$ ./dist/bin/bank
+Concurrently increment a shared variable a=0 one million times in each of 4 threads
+a=4000000
+```
+
+## `barrier`
+
+Program `barrier` updates each position of a string at different rates, but using
+a barrier, they still stay in sync:
+
+```console
+$ ./dist/bin/barrier
+Concurrently update each character in a string, but use
+a barrier to synchronize each thread
+> ffff
+```
+
+## `cancel`
+
+Program `cancel` illustrates how to cancel a running thread and clean up the resources it was using.
+
+```console
+$ ./dist/bin/cancel
+Making a compute bound loop cancelable, with cleanup of resources
+0
+1
+Canceling compute-bound thread now...
+2
+Starting the cleanup...
+Done with the cleanup
+Compute-bound thread was canceled as expected.
+```
+
+## `client-server`
+
+```console
+...
+```
+
+## `crew`
+
+```console
+...
+```
+
+## `hello`
+
 Output should be something like below. Program `hello` illustrates multiple threads
 concurrently saying hello.
 
@@ -41,104 +94,7 @@ goodbye from thread 0
 goodbye from main
 ```
 
-`bank` is a program that illustrates the use of mutexes to control access to data shared
-between threads, in this case a bank account.
-
-```console
-$ ./dist/bin/bank
-Concurrently increment a shared variable a=0 one million times in each of 4 threads
-a=4000000
-```
-
-`warehouse` is a program that illustrates conditional wait variables on a threadsafe stack
-that simulates the stock in a warehouse, with a producer and a consumer adding and taking
-items from said stack.
-
-```
-$ ./dist/bin/warehouse
-___ ___ ___
-___ ___ ___
-produced item 1 of 10 with id 716
-716 ___ ___
-716 ___ ___
-consumed item 1 of 10 with id 716
-produced item 2 of 10 with id 965
-965 ___ ___
-965 ___ ___
-consumed item 2 of 10 with id 965
-___ ___ ___
-___ ___ ___
-___ ___ ___
-Out of stock, waiting...
-produced item 3 of 10 with id 111
-consumed item 3 of 10 with id 111
-___ ___ ___
-___ ___ ___
-Out of stock, waiting...
-___ ___ ___
-___ ___ ___
-___ ___ ___
-produced item 4 of 10 with id 801
-consumed item 4 of 10 with id 801
-___ ___ ___
-Out of stock, waiting...
-___ ___ ___
-___ ___ ___
-produced item 5 of 10 with id 351
-consumed item 5 of 10 with id 351
-___ ___ ___
-produced item 6 of 10 with id 822
-822 ___ ___
-822 ___ ___
-822 ___ ___
-produced item 7 of 10 with id 524
-822 524 ___
-produced item 8 of 10 with id 701
-822 524 701
-822 524 701
-822 524 701
-822 524 701
-822 524 701
-consumed item 6 of 10 with id 701
-produced item 9 of 10 with id 117
-822 524 117
-822 524 117
-822 524 117
-822 524 117
-822 524 117
-822 524 117
-produced item 10 of 10 with id 941
-Out of space, waiting...
-822 524 117
-822 524 117
-822 524 117
-consumed item 7 of 10 with id 117
-822 524 941
-822 524 941
-822 524 941
-822 524 941
-822 524 941
-822 524 941
-822 524 941
-822 524 941
-consumed item 8 of 10 with id 941
-822 524 ___
-822 524 ___
-822 524 ___
-822 524 ___
-822 524 ___
-822 524 ___
-consumed item 9 of 10 with id 524
-822 ___ ___
-822 ___ ___
-822 ___ ___
-822 ___ ___
-822 ___ ___
-822 ___ ___
-822 ___ ___
-822 ___ ___
-consumed item 10 of 10 with id 822
-```
+## `pipeline`
 
 `pipeline` is a program that illustrates pipelining, with threadsafe ring buffer queues
 in between each stage of the pipeline. This example builds on the examples that use
@@ -194,29 +150,13 @@ vin 3: complete
 thread 'sink' complete
 ```
 
-Program `barrier` updates each position of a string at different rates, but using
-a barrier, they still stay in sync:
+## `pool`
 
 ```console
-$ ./dist/bin/barrier
-Concurrently update each character in a string, but use
-a barrier to synchronize each thread
-> ffff
+...
 ```
 
-Program `cancel` illustrates how to cancel a running thread and clean up the resources it was using.
-
-```console
-$ ./dist/bin/cancel
-Making a compute bound loop cancelable, with cleanup of resources
-0
-1
-Canceling compute-bound thread now...
-2
-Starting the cleanup...
-Done with the cleanup
-Compute-bound thread was canceled as expected.
-```
+## `rwlock`
 
 Program `rwlock` illustrates how to use a read-write lock on some data `value`, where multiple
 threads can read the value concurrently, but only one thread can have write access at any given
@@ -439,6 +379,8 @@ thread_id|reading|writing|done|value
         5|       |       |done
 ```
 
+## `spmd`
+
 Program `spmd` illustrates the concept of a SPMD (Single Program, Multiple Data):
 
 ```console
@@ -450,6 +392,104 @@ thread sum  : 1173
 thread sum  : 1022
 thread sum  : 1262
 parallel sum: 4731
+```
+
+## `timeout`
+
+```console
+...
+```
+
+## `warehouse`
+
+`warehouse` is a program that illustrates conditional wait variables on a threadsafe stack
+that simulates the stock in a warehouse, with a producer and a consumer adding and taking
+items from said stack.
+
+```
+$ ./dist/bin/warehouse
+___ ___ ___
+___ ___ ___
+produced item 1 of 10 with id 716
+716 ___ ___
+716 ___ ___
+consumed item 1 of 10 with id 716
+produced item 2 of 10 with id 965
+965 ___ ___
+965 ___ ___
+consumed item 2 of 10 with id 965
+___ ___ ___
+___ ___ ___
+___ ___ ___
+Out of stock, waiting...
+produced item 3 of 10 with id 111
+consumed item 3 of 10 with id 111
+___ ___ ___
+___ ___ ___
+Out of stock, waiting...
+___ ___ ___
+___ ___ ___
+___ ___ ___
+produced item 4 of 10 with id 801
+consumed item 4 of 10 with id 801
+___ ___ ___
+Out of stock, waiting...
+___ ___ ___
+___ ___ ___
+produced item 5 of 10 with id 351
+consumed item 5 of 10 with id 351
+___ ___ ___
+produced item 6 of 10 with id 822
+822 ___ ___
+822 ___ ___
+822 ___ ___
+produced item 7 of 10 with id 524
+822 524 ___
+produced item 8 of 10 with id 701
+822 524 701
+822 524 701
+822 524 701
+822 524 701
+822 524 701
+consumed item 6 of 10 with id 701
+produced item 9 of 10 with id 117
+822 524 117
+822 524 117
+822 524 117
+822 524 117
+822 524 117
+822 524 117
+produced item 10 of 10 with id 941
+Out of space, waiting...
+822 524 117
+822 524 117
+822 524 117
+consumed item 7 of 10 with id 117
+822 524 941
+822 524 941
+822 524 941
+822 524 941
+822 524 941
+822 524 941
+822 524 941
+822 524 941
+consumed item 8 of 10 with id 941
+822 524 ___
+822 524 ___
+822 524 ___
+822 524 ___
+822 524 ___
+822 524 ___
+consumed item 9 of 10 with id 524
+822 ___ ___
+822 ___ ___
+822 ___ ___
+822 ___ ___
+822 ___ ___
+822 ___ ___
+822 ___ ___
+822 ___ ___
+consumed item 10 of 10 with id 822
 ```
 
 ## Acknowledgements
