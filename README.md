@@ -439,6 +439,19 @@ thread_id|reading|writing|done|value
         5|       |       |done
 ```
 
+Program `spmd` illustrates the concept of a SPMD (Single Program, Multiple Data):
+
+```console
+$ ./dist/bin/spmd
+Calculate the sum of an array of random numbers serially and in parallel
+serial sum  : 4731
+thread sum  : 1274
+thread sum  : 1173
+thread sum  : 1022
+thread sum  : 1262
+parallel sum: 4731
+```
+
 ## Acknowledgements
 
 _This project was initialized using [Copier](https://pypi.org/project/copier) and the [copier-template-for-c-projects](https://github.com/jspaaks/copier-template-for-c-projects)._
