@@ -1,6 +1,7 @@
-#include <stdio.h>      // fprintf, stdout
-#include <stdlib.h>     // EXIT_SUCCESS, srand, rand
 #include <pthread.h>    // pthreads_*
+#include <stdio.h>      // fprintf, stdout, stderr
+#include <stdlib.h>     // EXIT_SUCCESS, srand, rand, calloc, free, exit
+#include <time.h>       // time
 
 
 struct ctx {
