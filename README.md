@@ -65,8 +65,37 @@ Compute-bound thread was canceled as expected.
 
 ## `client-server`
 
+Program `client-server` illustrates how multiple client threads within an application may send
+requests to a server thread, as a way to synchronize access to e.g. stdin
+
 ```console
-...
+$ ./dist/bin/client-server 
+Use multiple client threads to make both synchronous and
+asynchronous requests to a server.
+client 2 wants to know, what is your message?
+ > asdf
+client 1 wants to know, what is your message?
+ > qwer
+client 2, loop 1 / 4: asdf
+client 1, loop 1 / 4: qwer
+client 2, loop 2 / 4: asdf
+client 4 wants to know, what is your message?
+ > zxcv
+client 1, loop 2 / 4: qwer
+client 2, loop 3 / 4: asdf
+client 3 wants to know, what is your message?
+ > ghjk
+client 1, loop 3 / 4: qwer
+client 2, loop 4 / 4: asdf
+client 1, loop 4 / 4: qwer
+client 4, loop 1 / 4: zxcv
+client 4, loop 2 / 4: zxcv
+client 4, loop 3 / 4: zxcv
+client 3, loop 1 / 4: ghjk
+client 4, loop 4 / 4: zxcv
+client 3, loop 2 / 4: ghjk
+client 3, loop 3 / 4: ghjk
+client 3, loop 4 / 4: ghjk
 ```
 
 ## `crew`
