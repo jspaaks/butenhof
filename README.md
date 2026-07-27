@@ -180,6 +180,173 @@ goodbye from thread 0
 goodbye from main
 ```
 
+## philosophers
+
+Program that illustrates the dining philosophers problem.
+
+```console
+$ ./dist/bin/philosophers 
+philosopher 0 has acquired the first fork    (id = 0x578fdbd002a0)
+philosopher 0 has acquired the second fork   (id = 0x578fdbd002c8)
+philosopher 0 starts eating bite 1 of 6
+philosopher 1 has acquired the first fork    (id = 0x578fdbd002f0)
+philosopher 3 has acquired the first fork    (id = 0x578fdbd00340)
+philosopher 3 has acquired the second fork   (id = 0x578fdbd00318)
+philosopher 3 starts eating bite 1 of 6
+philosopher 3 done eating bite 1 of 6
+philosopher 3 has released their second fork (id = 0x578fdbd00318)
+philosopher 3 has released their first fork  (id = 0x578fdbd00340)
+philosopher 3 is thinking
+philosopher 4 has acquired the first fork    (id = 0x578fdbd00340)
+philosopher 0 done eating bite 1 of 6
+philosopher 0 has released their second fork (id = 0x578fdbd002c8)
+philosopher 0 has released their first fork  (id = 0x578fdbd002a0)
+philosopher 0 is thinking
+philosopher 1 has acquired the second fork   (id = 0x578fdbd002c8)
+philosopher 1 starts eating bite 1 of 4
+philosopher 4 has acquired the second fork   (id = 0x578fdbd002a0)
+philosopher 4 starts eating bite 1 of 4
+philosopher 1 done eating bite 1 of 4
+philosopher 1 has released their second fork (id = 0x578fdbd002c8)
+philosopher 1 has released their first fork  (id = 0x578fdbd002f0)
+philosopher 1 is thinking
+philosopher 2 has acquired the first fork    (id = 0x578fdbd002f0)
+philosopher 2 has acquired the second fork   (id = 0x578fdbd00318)
+philosopher 2 starts eating bite 1 of 2
+philosopher 4 done eating bite 1 of 4
+philosopher 4 has released their second fork (id = 0x578fdbd002a0)
+philosopher 4 has released their first fork  (id = 0x578fdbd00340)
+philosopher 4 is thinking
+philosopher 3 has acquired the first fork    (id = 0x578fdbd00340)
+philosopher 2 done eating bite 1 of 2
+philosopher 2 has released their second fork (id = 0x578fdbd00318)
+philosopher 2 has released their first fork  (id = 0x578fdbd002f0)
+philosopher 2 is thinking
+philosopher 3 has acquired the second fork   (id = 0x578fdbd00318)
+philosopher 3 starts eating bite 2 of 6
+philosopher 0 has acquired the first fork    (id = 0x578fdbd002a0)
+philosopher 0 has acquired the second fork   (id = 0x578fdbd002c8)
+philosopher 0 starts eating bite 2 of 6
+philosopher 1 has acquired the first fork    (id = 0x578fdbd002f0)
+philosopher 3 done eating bite 2 of 6
+philosopher 3 has released their second fork (id = 0x578fdbd00318)
+philosopher 3 has released their first fork  (id = 0x578fdbd00340)
+philosopher 3 is thinking
+philosopher 4 has acquired the first fork    (id = 0x578fdbd00340)
+philosopher 0 done eating bite 2 of 6
+philosopher 0 has released their second fork (id = 0x578fdbd002c8)
+philosopher 0 has released their first fork  (id = 0x578fdbd002a0)
+philosopher 0 is thinking
+philosopher 1 has acquired the second fork   (id = 0x578fdbd002c8)
+philosopher 1 starts eating bite 2 of 4
+philosopher 4 has acquired the second fork   (id = 0x578fdbd002a0)
+philosopher 4 starts eating bite 2 of 4
+philosopher 1 done eating bite 2 of 4
+philosopher 1 has released their second fork (id = 0x578fdbd002c8)
+philosopher 1 has released their first fork  (id = 0x578fdbd002f0)
+philosopher 1 is thinking
+philosopher 2 has acquired the first fork    (id = 0x578fdbd002f0)
+philosopher 2 has acquired the second fork   (id = 0x578fdbd00318)
+philosopher 2 starts eating bite 2 of 2
+philosopher 2 done eating bite 2 of 2
+philosopher 2 has released their second fork (id = 0x578fdbd00318)
+philosopher 2 has released their first fork  (id = 0x578fdbd002f0)
+philosopher 2 is thinking
+philosopher 1 has acquired the first fork    (id = 0x578fdbd002f0)
+philosopher 1 has acquired the second fork   (id = 0x578fdbd002c8)
+philosopher 1 starts eating bite 3 of 4
+philosopher 4 done eating bite 2 of 4
+philosopher 4 has released their second fork (id = 0x578fdbd002a0)
+philosopher 4 has released their first fork  (id = 0x578fdbd00340)
+philosopher 4 is thinking
+philosopher 0 has acquired the first fork    (id = 0x578fdbd002a0)
+philosopher 3 has acquired the first fork    (id = 0x578fdbd00340)
+philosopher 3 has acquired the second fork   (id = 0x578fdbd00318)
+philosopher 3 starts eating bite 3 of 6
+philosopher 1 done eating bite 3 of 4
+philosopher 1 has released their second fork (id = 0x578fdbd002c8)
+philosopher 1 has released their first fork  (id = 0x578fdbd002f0)
+philosopher 1 is thinking
+philosopher 2 is done
+philosopher 0 has acquired the second fork   (id = 0x578fdbd002c8)
+philosopher 0 starts eating bite 3 of 6
+philosopher 1 has acquired the first fork    (id = 0x578fdbd002f0)
+philosopher 3 done eating bite 3 of 6
+philosopher 3 has released their second fork (id = 0x578fdbd00318)
+philosopher 3 has released their first fork  (id = 0x578fdbd00340)
+philosopher 3 is thinking
+philosopher 4 has acquired the first fork    (id = 0x578fdbd00340)
+philosopher 0 done eating bite 3 of 6
+philosopher 0 has released their second fork (id = 0x578fdbd002c8)
+philosopher 0 has released their first fork  (id = 0x578fdbd002a0)
+philosopher 0 is thinking
+philosopher 1 has acquired the second fork   (id = 0x578fdbd002c8)
+philosopher 1 starts eating bite 4 of 4
+philosopher 4 has acquired the second fork   (id = 0x578fdbd002a0)
+philosopher 4 starts eating bite 3 of 4
+philosopher 1 done eating bite 4 of 4
+philosopher 1 has released their second fork (id = 0x578fdbd002c8)
+philosopher 1 has released their first fork  (id = 0x578fdbd002f0)
+philosopher 1 is thinking
+philosopher 4 done eating bite 3 of 4
+philosopher 4 has released their second fork (id = 0x578fdbd002a0)
+philosopher 4 has released their first fork  (id = 0x578fdbd00340)
+philosopher 4 is thinking
+philosopher 3 has acquired the first fork    (id = 0x578fdbd00340)
+philosopher 3 has acquired the second fork   (id = 0x578fdbd00318)
+philosopher 3 starts eating bite 4 of 6
+philosopher 0 has acquired the first fork    (id = 0x578fdbd002a0)
+philosopher 0 has acquired the second fork   (id = 0x578fdbd002c8)
+philosopher 0 starts eating bite 4 of 6
+philosopher 1 is done
+philosopher 0 done eating bite 4 of 6
+philosopher 0 has released their second fork (id = 0x578fdbd002c8)
+philosopher 0 has released their first fork  (id = 0x578fdbd002a0)
+philosopher 0 is thinking
+philosopher 3 done eating bite 4 of 6
+philosopher 3 has released their second fork (id = 0x578fdbd00318)
+philosopher 3 has released their first fork  (id = 0x578fdbd00340)
+philosopher 3 is thinking
+philosopher 4 has acquired the first fork    (id = 0x578fdbd00340)
+philosopher 4 has acquired the second fork   (id = 0x578fdbd002a0)
+philosopher 4 starts eating bite 4 of 4
+philosopher 4 done eating bite 4 of 4
+philosopher 4 has released their second fork (id = 0x578fdbd002a0)
+philosopher 4 has released their first fork  (id = 0x578fdbd00340)
+philosopher 4 is thinking
+philosopher 0 has acquired the first fork    (id = 0x578fdbd002a0)
+philosopher 0 has acquired the second fork   (id = 0x578fdbd002c8)
+philosopher 0 starts eating bite 5 of 6
+philosopher 3 has acquired the first fork    (id = 0x578fdbd00340)
+philosopher 3 has acquired the second fork   (id = 0x578fdbd00318)
+philosopher 3 starts eating bite 5 of 6
+philosopher 4 is done
+philosopher 3 done eating bite 5 of 6
+philosopher 3 has released their second fork (id = 0x578fdbd00318)
+philosopher 3 has released their first fork  (id = 0x578fdbd00340)
+philosopher 3 is thinking
+philosopher 0 done eating bite 5 of 6
+philosopher 0 has released their second fork (id = 0x578fdbd002c8)
+philosopher 0 has released their first fork  (id = 0x578fdbd002a0)
+philosopher 0 is thinking
+philosopher 3 has acquired the first fork    (id = 0x578fdbd00340)
+philosopher 3 has acquired the second fork   (id = 0x578fdbd00318)
+philosopher 3 starts eating bite 6 of 6
+philosopher 0 has acquired the first fork    (id = 0x578fdbd002a0)
+philosopher 0 has acquired the second fork   (id = 0x578fdbd002c8)
+philosopher 0 starts eating bite 6 of 6
+philosopher 3 done eating bite 6 of 6
+philosopher 3 has released their second fork (id = 0x578fdbd00318)
+philosopher 3 has released their first fork  (id = 0x578fdbd00340)
+philosopher 3 is thinking
+philosopher 0 done eating bite 6 of 6
+philosopher 0 has released their second fork (id = 0x578fdbd002c8)
+philosopher 0 has released their first fork  (id = 0x578fdbd002a0)
+philosopher 0 is thinking
+philosopher 3 is done
+philosopher 0 is done
+```
+
 ## `pipeline`
 
 `pipeline` is a program that illustrates pipelining, with threadsafe ring buffer queues
