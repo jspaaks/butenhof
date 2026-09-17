@@ -1,6 +1,11 @@
 # Butenhof
 
-Exploring multithreaded applications including mutexes and condition variables with POSIX threads.
+Exploring multithreaded applications including mutexes and condition variables with POSIX
+threads following _Programming with POSIX threads_ by David R. Butenhof.
+
+<div align="center">
+    <img src="images/book-front.jpg" style="margin:50px" alt="front of the book"/>
+</div>
 
 ## CMake
 
